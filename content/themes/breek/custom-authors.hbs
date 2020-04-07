@@ -11,7 +11,7 @@
     {{#get 'authors' limit='all' include='count.posts' order='count.posts desc'}}
       <div class="post-feed">
         {{#foreach authors}}
-          <article class="post-card {{#unless profile_image}} no-image{{/unless}}">
+          {{!-- <article class="post-card {{#unless profile_image}} no-image{{/unless}}">
             {{#if profile_image}}
               <a class="post-card-image-link" href="">
                 <div class="post-card-image" style="background-image: url({{profile_image}})"></div>
@@ -27,7 +27,31 @@
                 </section>
               </a>
             </div>
-          </article>
+          </article> --}}
+            {{#if profile_image}}
+                <div class="avatar">                            
+                    <a href="{{url}}" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url( {{img_url profile_image size="widget_thumb"}} );"></span></a>                            
+                </div>
+            {{/if}}
+            <div class="info">
+                <h4 class="title small author-name gradient-effect no-margin"><a href="{{url}}">{{name}}</a></h4>
+                <div class="social">
+                    {{#if location}}
+                        <a href="javascript:void(0)" class="location translate-effect" title="{{t 'Location' }}: {{location}}" target="_blank"><i class="fa fa-map-marker"></i></a>
+                    {{/if}}
+                    {{#if website}}
+                        <a href="{{website}}" class="website translate-effect" title="{{t 'Website' }}: {{website}}" target="_blank"><i class="fa fa-globe"></i></a>
+                    {{/if}}
+                    {{#if twitter}}
+                        <a href="{{twitter_url}}" class="twitter translate-effect" title="{{t 'Follow me on Twitter' }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    {{/if}}
+                    {{#if facebook}}
+                        <a href="{{facebook_url}}" class="facebook translate-effect" title="{{t 'Follow me on Facebook' }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                    {{/if}}
+                </div>
+                <div class="clear"></div>
+                <p>{{bio}}</p>
+            </div>
         {{/foreach}}
       </div>
     {{/get}}
