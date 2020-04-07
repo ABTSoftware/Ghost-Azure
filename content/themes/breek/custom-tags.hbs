@@ -3,13 +3,15 @@
 {{#post}}
 
 <main id="site-main" class="site-main outer" role="main">
-  <div class="inner">
+  <div class="inner grid-container widget-tag-cloud">
     <header class="post-full-header">
       <h1 class="post-full-title">{{title}}</h1>
     </header>
+    <p>Check out the tags below to see related articles on that topic.</p>
+    <p>&nbsp;</p>
     {{#get 'tags' limit='all' include='count.posts' order='count.posts desc'}}
     {{#foreach tags}}
-        <a href='{{ url }}'>
+        <a href='{{ url }}' class="ctag">
         <h2>{{ name }} <small>({{ count.posts }})</small></h2>
         </a>
     {{/foreach}}
