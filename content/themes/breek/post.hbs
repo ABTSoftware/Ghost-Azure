@@ -59,15 +59,17 @@
 
                         <!-- start: .meta -->
                         <div class="meta">
-                            {{#primary_author}}
-                                <a href="{{url}}" class="author meta-info hide-on-mobile" title="{{name}}">                                        
-                                    {{#if profile_image}}
-                                        <span class="author-image cover" style="background-image: url( {{profile_image}} );"></span>
-                                    {{/if}}
-                                    <span class="author-name">{{t "By"}} {{name}}</span>
-                                </a>
-                            {{/primary_author}}                              
-                            <time class="meta-info" datetime="{{date format="YYYY-MM-DD"}}"><svg><use xlink:href="#calendar"></use></svg> {{date format="MMMM DD, YYYY"}}</time>
+                            {{#if authors}}
+                                {{#foreach authors}}
+                                    <a href="{{url}}" class="author meta-info hide-on-mobile" title="{{name}}">                                        
+                                        {{#if profile_image}}
+                                            <span class="author-image cover" style="background-image: url( {{profile_image}} );"></span>
+                                        {{/if}}
+                                        <span class="author-name">{{t "By"}} {{name}}</span>
+                                    </a>
+                                {{/foreach}}
+                            {{/if}}
+                          <time class="meta-info" datetime="{{date format="YYYY-MM-DD"}}"><svg><use xlink:href="#calendar"></use></svg> {{date format="MMMM DD, YYYY"}}</time>
                             
                             <a href="#comments" class="comments meta-info"><svg><use xlink:href="#comments-icon"></use></svg> <span class="disqus-comment-count" data-disqus-url="{{@site.url}}{{url}}" data-disqus-identifier="{{comment_id}}">0</span></a>     
 
